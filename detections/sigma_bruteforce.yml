@@ -1,0 +1,32 @@
+title: Brute Force Attack - Multiple Failed Logons Followed by Success
+id: a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d
+status: experimental
+description: Detects potential brute force attacks by identifying multiple failed logon attempts (Event ID 4625) from the same source IP followed by a successful logon (Event ID 4624) within a short time window. This pattern indicates an attacker may have successfully guessed credentials after multiple attempts.
+references:
+    - https://attack.mitre.org/techniques/T1110/001/
+    - https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4625
+    - https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624
+author: SOC Analyst Team
+date: 2024-03-04
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_failed:
+        EventID: 4625
+    selection_success:
+        EventID: 4624
+    condition: selection_failed or selection_success
+    timeframe: 5m
+    threshold:
+        failed_attempts: 5
+falsepositives:
+    - Legitimate users forgetting passwords
+    - Service accounts with misconfigured credentials
+    - Automated systems with authentication retry logic
+    - Password expiration forcing multiple attempts
+level: high
+tags:
+    - attack.credential_access
+    - attack.t1110.001
+    - attack.t1110

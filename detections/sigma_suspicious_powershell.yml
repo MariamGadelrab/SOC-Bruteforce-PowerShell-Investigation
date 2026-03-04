@@ -1,0 +1,59 @@
+title: Suspicious PowerShell Execution - Encoded Commands and Download Cradles
+id: f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c
+status: experimental
+description: Detects suspicious PowerShell activity including encoded commands, download cradles (DownloadString, DownloadFile), execution policy bypasses, and hidden window execution. These techniques are commonly used by attackers to execute malicious payloads while evading detection.
+references:
+    - https://attack.mitre.org/techniques/T1059/001/
+    - https://attack.mitre.org/techniques/T1027/
+    - https://attack.mitre.org/techniques/T1105/
+    - https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe
+author: SOC Analyst Team
+date: 2024-03-04
+logsource:
+    product: windows
+    category: process_creation
+    service: powershell
+detection:
+    selection_encoded:
+        CommandLine|contains:
+            - '-EncodedCommand'
+            - '-enc'
+            - '-e '
+            - 'FromBase64String'
+    selection_download:
+        CommandLine|contains:
+            - 'DownloadString'
+            - 'DownloadFile'
+            - 'WebClient'
+            - 'Invoke-WebRequest'
+            - 'IWR'
+            - 'wget'
+            - 'curl'
+    selection_bypass:
+        CommandLine|contains:
+            - '-ExecutionPolicy Bypass'
+            - '-ep bypass'
+            - '-exec bypass'
+    selection_hidden:
+        CommandLine|contains:
+            - '-WindowStyle Hidden'
+            - '-w hidden'
+            - '-NoProfile'
+    selection_iex:
+        CommandLine|contains:
+            - 'IEX'
+            - 'Invoke-Expression'
+    condition: (selection_encoded and (selection_download or selection_iex)) or (selection_download and selection_hidden) or (selection_bypass and selection_download)
+falsepositives:
+    - Legitimate administrative scripts using encoded commands
+    - Software deployment tools using PowerShell remoting
+    - Automated patch management systems
+    - Security tools performing legitimate downloads
+level: high
+tags:
+    - attack.execution
+    - attack.t1059.001
+    - attack.defense_evasion
+    - attack.t1027
+    - attack.command_and_control
+    - attack.t1105
