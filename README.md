@@ -2,7 +2,7 @@
 
 A complete portfolio project simulating a freelance SOC engagement investigating brute force attacks and suspicious PowerShell activity on Windows infrastructure.
 
-## 🎯 Project Overview
+##  Project Overview
 
 This project demonstrates real-world SOC analyst capabilities including:
 - Log analysis and threat detection
@@ -11,7 +11,7 @@ This project demonstrates real-world SOC analyst capabilities including:
 - Professional incident reporting
 - MITRE ATT&CK framework mapping
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 .
@@ -33,7 +33,7 @@ This project demonstrates real-world SOC analyst capabilities including:
 └── README.md                             # This file
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -72,7 +72,7 @@ The script will:
 4. Generate 4 CSV files in the `output/` directory
 5. Display a summary in the terminal
 
-## 📊 Sample Data
+##  Sample Data
 
 The `data/logs.csv` file contains 32 realistic Windows log entries including:
 
@@ -120,7 +120,7 @@ The logs simulate a real attack chain:
 
 **MITRE ATT&CK**: T1059.001 (PowerShell), T1027 (Obfuscation), T1105 (Ingress Tool Transfer)
 
-## 📈 Investigation Script Features
+##  Investigation Script Features
 
 ### Main Script (`src/investigate.py`)
 
@@ -149,7 +149,7 @@ The logs simulate a real attack chain:
    - Detection type tagging
    - Severity assignment
 
-## 📋 Output Files Explained
+##  Output Files Explained
 
 ### 1. findings_summary.csv
 
@@ -185,7 +185,7 @@ Complete chronological timeline:
 - Severity assignments
 - Full event context
 
-## 📝 Incident Report
+##  Incident Report
 
 **File**: `report/incident_report.md`
 
@@ -301,7 +301,7 @@ Severity Breakdown:
 | Brute Force Attack | SRV-DC01 | admin | 192.168.100.45 | High | 2024-03-04 10:12:05 | 2024-03-04 10:13:10 |
 | Suspicious PowerShell | SRV-DC01 | admin | N/A | High | 2024-03-04 11:45:09 | 2024-03-04 11:45:09 |
 
-## 🛡️ Real-World Application
+##  Real-World Application
 
 ### Deploying Sigma Rules
 
@@ -326,7 +326,7 @@ The Python script can be adapted to:
 - Send alerts via email/Slack/PagerDuty
 - Export results to ticketing systems (Jira, ServiceNow)
 
-## 🔒 Security Considerations
+##  Security Considerations
 
 This project uses simulated data for educational purposes. In production:
 
@@ -336,14 +336,14 @@ This project uses simulated data for educational purposes. In production:
 - Implement proper access controls
 - Encrypt sensitive investigation data
 
-## 📚 References
+##  References
 
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
 - [Sigma Rule Specification](https://github.com/SigmaHQ/sigma)
 - [Windows Security Event Logs](https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/security-auditing-overview)
 - [PowerShell Security Best Practices](https://docs.microsoft.com/en-us/powershell/scripting/security/overview)
 
-## 🤝 Contributing
+##  Contributing
 
 This is a portfolio project, but suggestions for improvements are welcome:
 - Additional detection logic
@@ -351,13 +351,14 @@ This is a portfolio project, but suggestions for improvements are welcome:
 - Integration examples
 - Additional attack scenarios
 
-## 📄 License
+## License
 
 This project is provided for educational and portfolio purposes.
 
-## 👤 Author
+##  Author
 
-Senior SOC Analyst + Security Engineer
+Mariam Gadelrab
+Cybersecurity / SOC Engineer
 
 **Skills Demonstrated**:
 - Security Operations Center (SOC) Analysis
